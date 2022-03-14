@@ -12,8 +12,13 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use(express.urlencoded({ extended: true }))
+
+app.get('/', (req, resp) => {
+    resp.send("This is a URL Shortener Service ")
+})
+
 app.get('/:token', redirectUrl)
-app.post('/', createUrl)
+app.post('/shortUrl', createUrl)
 
 app.listen(7000, '0.0.0.0', () => {
     console.log("Server started in port : 7000")
